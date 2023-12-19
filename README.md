@@ -1,54 +1,65 @@
-# Messari Standard Subgraphs &bull; [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/messari/subgraphs/blob/master/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](docs/CONTRIBUTING.md) [![Issues Report](https://img.shields.io/badge/issues-report-yellow.svg)](https://github.com/messari/subgraphs/issues/new)
+![image](https://github.com/evildecay/etcdkeeper/blob/master/logo/logo-horizontal.png)
+## ETCD Keeper
+* Lightweight etcd web client.
+* Support etcd 2.x and etcd 3.x.
+* The server uses the etcd go client interface, and the server compiles with the etcd client package.
+* Based easyui framework to achieve(easyui license [easyui website](http://www.jeasyui.com)).
 
-<p align="center">
-  <a href="https://messari.io/protocol-explorer/all-protocols">
-    <img src="./docs/images/messari-logo.png" alt="Messari Logo" width="460" />
-  </a>
-</p>
+## Usage
+* Run etcdkeeper.exe (windows version)
+* Run etcdkeeper.exe -auth (If enable etcd authentication)
+* [Download other platform releases](https://github.com/evildecay/etcdkeeper/releases).
+```
+  Usage of etcdkeeper.exe:
+  -h string
+        host name or ip address (default: "0.0.0.0", the http server addreess, not etcd address)
+  -p int
+        port (default 8080)
+  -sep string
+        Separator (default "/")
+  -usetls
+        use tls (only v3)
+  -cacert string
+        verify certificates of TLS-enabled secure servers using this CA bundle (only v3)
+  -cert string
+        identify secure client using this TLS certificate file (only v3)
+  -key string
+        identify secure client using this TLS key file (only v3)
+  -auth bool
+        use etcd auth
+  -timeout int
+        ETCD client connect timeout
+```
+* Open your browser and enter the address: http://127.0.0.1:8080/etcdkeeper
+* Click on the version of the title to select the version of ETCD. The default is V3. Reopening will remember your choice.
+* Right click on the tree node to add or delete.
+* Get data based on etcd user permissions.
+  - Just display the list according to the configured permissions, and there will be time to add the configuration permission features.
+  - Each time you restart etcdkeeper, you need to enter the root username and password for each etcd server address. 
+  - [enable etcdv3 authentication](https://github.com/etcd-io/etcd/blob/master/Documentation/op-guide/authentication.md)
+  - [enable etcdv2 authentication](https://github.com/etcd-io/etcd/blob/master/Documentation/v2/authentication.md)
+* Display the status information of etcd, version, data size.
+* Etcd address can be modified by default to the localhost. If you change, press the Enter key to take effect.
 
-Messari subgraphs set an industry leading standard for on chain data 🚀
+## Features
+* Etcd client view, Add, update or delete nodes.
+* Content edits use the ace editor([Ace editor](https://ace.c9.io)). Support toml,ini,yaml,json,xml and so on to highlight view.
+* Content format. (Currently only support json, Other types can be extended later) Thanks jim3ma for his contribution.[@jim3ma]( https://github.com/jim3ma)
 
-Utilizing [The Graph](https://thegraph.com/) these subgraphs extract raw blockchain data and transform it into meaningful metrics, for products and analytics.
+## Work in progress
+* Add import and export features.  **(delay)**
 
-We aim to make sense of DEFI protocols in an open, holistic approach capturing every piece of data from a given protocol type.
+## Special Note
+Because the etcdv3 version uses the new storage concept, without the catalog concept, the client uses the previous default "/" delimiter to view. See the documentation for etcdv3 [clientv3 doc](https://godoc.org/github.com/coreos/etcd/clientv3).
 
-> Protocol types supported: [Lending](./schema-lending.graphql), [CDP](./schema-lending.graphql), [DEX](./schema-dex-amm.graphql), [Yield Aggregator](./schema-yield.graphql), [NFT Marketplace](./schema-nft-marketplace.graphql), [Network](./schema-network.graphql), [Bridge](./schema-bridge.graphql), Governance
+## Docker
+Etdkeeper official image. (https://hub.docker.com/r/evildecay/etcdkeeper)
 
-<sub>If you are a protocol and want to collaborate please visit [messari.io/web3-data-collaboration](https://messari.io/web3-data-collaboration)</sub>
+## Screenshots
+![image](https://github.com/evildecay/etcdkeeper/blob/master/screenshots/ui.png)
 
-## Working Environment
+## Demo
+![image](https://github.com/evildecay/etcdkeeper/blob/master/screenshots/ui.gif)
 
-Go to [`docs/SETUP.md`](./docs/SETUP.md) to learn how to setup your machine for Messari subgraph development.
-
-## Learn the Project
-
-It is important to familiarize yourself with the project structure and tooling to build efficiently. Go to [`docs/STRUCTURE.md`](./docs/STRUCTURE.md) and [`docs/TOOLING.md`](./docs/TOOLING.md) to learn more.
-
-- Familiarize yourself with our schemas labeled `schema-{protocol type}.graphql`. Read more details in [`docs/SCHEMA.md`](./docs/SCHEMA.md)
-- We update our schemas as necessary. You can find out about each upgrade in [`docs/CHANGES.md`](./docs/CHANGES.md)
-- To learn about Messari standard methodologies see [`docs/METHODOLOGY.md`](./docs/METHODOLOGY.md)
-
-## Becoming a Subgraph Developer
-
-Becoming a good subgraph developer will take patience and practice. The following resources are for developers of all skill levels to learn the ins and outs of subgraph development. 👾
-
-- For a full walkthrough of our subgraph development process visit [`docs/WALKTHROUGH.md`](./docs/WALKTHROUGH.md).
-- Resources for development of varying levels can be found in [`docs/RESOURCES.md`](./docs/RESOURCES.md).
-- To learn about common errors, best error handling practices, and debugging see [`docs/ERRORS.md`](./docs/ERRORS.md)
-- Subgraph performance is also a concern. Learn about indexing / querying performance by reading [`docs/PERFORMANCE`](./docs/PERFORMANCE.md)
-- Learn about retrieving prices in subgraphs and how to handle this in [`docs/ORACLES.md`](./docs/ORACLES.md)
-
-## Contributing Guidelines
-
-We welcome contributions from the community! You can point out or fix bugs, suggest changes, add new features, or add new subgraphs. ✅
-
-- For bugs, features, or change requests please submit an [issue](https://github.com/messari/subgraphs/issues) following our [guide](./docs/ISSUES.md).
-- General contribution guidelines and practices will be found in [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md)
-
-## Development Status
-
-You can find a visualizer with the status of all Messari subgraphs at [subgraphs.xyz](https://subgraphs.messari.io/)! The code lives under `./dashboard`.
-
-You can see our subgraphs supporting the data for our product ["Protocol Metrics"](https://messari.io/protocol-explorer/all-protocols)
-
-> _Quick note_: the raw deployment status of all subgraphs lives in [`./deployment/deployment.json`](./deployment/deployment.json)
+## License
+MIT
