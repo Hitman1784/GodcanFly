@@ -1,23 +1,32 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "lib": ["es2019"],
-    "module": "commonjs",
-    "noImplicitAny": true,
-    "outDir": "build",
-    "rootDir": "src",
-    "preserveConstEnums": true,
-    "strictNullChecks": true,
-    "strict": true,
-    "sourceMap": true,
-    "declaration": true,
-    "skipLibCheck": true,
-    "target": "es2020",
-    "resolveJsonModule": true,
-    "allowJs": true,
-    "typeRoots": ["node_modules/@types"],
-    "esModuleInterop": true
+  "ts-node": {
+    "compilerOptions": {
+      "module": "commonjs"
+    }
   },
-  "include": ["src/**/*"],
-  "exclude": ["**/*.test.ts"]
+  "compilerOptions": {
+    "target": "es2019",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "noEmit": true,
+    "jsx": "preserve",
+    "allowJs": false,
+    "noImplicitThis": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "lib": [
+      "ES2019",
+      "DOM"
+    ]
+  },
+  "include": [
+    "fees/*",
+    "dexs/*",
+    "adapters/*", "aggregators/*", "options/*", "incentives/*", "fees/*", "protocols/*", "fees/gmx-v2/gmx-v2.ts", "fees/tigris/index.ts", "fees/xoxno/xoxno.ts"],
 }
