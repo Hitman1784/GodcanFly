@@ -1,21 +1,24 @@
-# Compiled Object files, Static and Dynamic libs (Shared Objects)
-*.iml
+.env
 
-# Folders
-_obj
-_test
-.idea
-pkg
-bin
-*.tmp
+artifacts/
+cache-hardhat/
+cache-foundry/
+cache/
+out/
 
-# Architecture specific extensions/prefixes
-*.[568vq]
-[568vq].out
+node_modules
 
-*.exe
-*.class
+coverage/
+coverage.json
+lcov.info
+report/
 
-# Package Files
-*.war
-*.ear
+.vscode
+
+deployments/
+
+.DS_Store
+tenderly.yaml
+
+.gas*
+docs/
