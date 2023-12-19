@@ -1,28 +1,27 @@
 {
-  "name": "widgets",
-  "description": "DODOEX Widgets",
-  "homepage": "https://github.com/DODOEX/widgets#readme",
-  "repository": "https://github.com/DODOEX/widgets",
-  "files": [
-    "dist"
-  ],
-  "private": "false",
-  "scripts": {
-    "prepare": "husky install",
-    "start": "yarn workspace doc start",
-    "tsc": "lerna run typescript",
-    "test": "lerna run test",
-    "test:e2e": "lerna run test:e2e",
-    "build": "yarn workspace @dodoex/icons build && yarn workspace @dodoex/components build && yarn workspace @dodoex/widgets build",
-    "release": "yarn run build && yarn workspace @dodoex/widgets release",
-    "build-doc": "yarn run build && yarn workspace doc build"
+  "name": "token-profile",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "@types/node": "^10.12.12",
+    "chalk": "^2.4.1",
+    "pngjs": "^3.3.3",
+    "ts-lint": "^4.5.1",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
   },
-  "workspaces": [
-    "packages/*"
-  ],
-  "license": "GPL-3.0-or-later",
-  "devDependencies": {
-    "husky": "^8.0.3",
-    "lerna": "^5.4.0"
-  }
+  "scripts": {
+    "test": "ts-node ./test/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/consenlabs/token-profile.git"
+  },
+  "author": "imToken PTE. LTD",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/consenlabs/token-profile/issues"
+  },
+  "homepage": "https://github.com/consenlabs/token-profile#readme"
 }

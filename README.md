@@ -1,75 +1,35 @@
-# DODO Widget
+# Token Profile Guideline
 
-<p align="center">
-  <a>
-    <img src="https://i.postimg.cc/W4q937Db/Logo.png" alt="DODO" />
-  </a>
-</p>
+*Read this in other languages: [English](README.md), [简体中文](README.zh-CN.md).*
 
-<p align="center">
-<a href="https://www.npmjs.com/package/@dodoex/widgets"><img src="https://img.shields.io/npm/v/@dodoex/widgets" alt="npm version" /></a>
-<p>
+This repository (repo) provides the details about self-submitting **Token** information to imToken via GitHub.
 
-## DODO Swap Widget
+## What is Token Profile?
 
-The DODO Swap Widget allows you to build customized front-end interfaces for the DODO protocol, and embed widgets in DeFi applications for quick asset exchange and other uses. DODO currently supports 9 chains in total, including Ethereum, BNB Chain, Polygon, Arbitrum, Avalanche, OKC, Optimism, Aurora, and Conflux eSpace. We intend to add support for more chains in the future.
+Token Profile is the detailed information of the token issued by the project party. imToken 2.0 provides a dedicated display page for the Token Profile, to give users a more complete overview of tokens.
+The page is located at:
+**Wallet(tab)** -> **Token(for example, ETH)** -> **Token Profile Button(right-top corner)**.
 
-## Installation
 
-Install the widgets library via `npm` or `yarn`.
 
-```js
-yarn add @dodoex/widgets
-```
+The page is displayed as follows:
 
-```js
-npm i --save @dodoex/widgets
-```
+![Wallet Tab](tutorial/sample.png)
 
-## Documentation
 
-You can find the DODO Widget documentation [on the website](https://docs.dodoex.io/english/developers/swap-widget) and check out the [Getting Started](https://docs.dodoex.io/english/developers/swap-widget/getting-started) page for a quick overview.
+##  Overview
 
-- [Profit-Sharing Instructions](https://docs.dodoex.io/english/developers/swap-widget/profit-sharing-instructions)
-- [API](https://docs.dodoex.io/english/developers/swap-widget/api)
+imToken supports the submission of ERC20 and EOS Token Profile, please select the corresponding tutorial to understand the specific procedures:
+- [ERC20 Token Profile Guideline](tutorial/erc20-tutorial.en.md)
+- [EOS Token Profile Guideline](tutorial/eos-tutorial.en.md)
 
-## Examples
 
-Inside the `examples` folder, there two different examples,
+## Suggestions
 
-For react app:
+Since the submission of the Token Profile involves many aspects: GitHub usage, Logo design, project information introduction etc, we recommend that the **Token Profile submission to be done by your market operations staff, developers, and designers together.**
 
-```shell
-$ git clone git@github.com:DODOEX/widgets.git
-$ cd example/react-app
-```
+imToken will process the application within 5 business days.
 
-For js app:
+## Copyright
 
-```shell
-$ git clone git@github.com:DODOEX/widgets.git
-$ cd example/js-app
-```
-
-Install and run the example:
-
-```bash
-yarn          # install dependencies
-yarn start    # run the development server
-# or
-npm           # install dependencies
-npm run start # run the development server
-```
-
-Other details:
-
-- [React App](https://github.com/DODOEX/widgets/tree/main/example/react-app)
-- [JS App](https://github.com/DODOEX/widgets/tree/main/example/js-app)
-
-## License
-
-- [GPL-3.0 ](https://github.com/DODOEX/widgets/blob/main/LICENSE)
-
-## About DODO
-
-- [DODO Web](https://dodoex.io/)
+2019&copy;imToken PTE. LTD.
