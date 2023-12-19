@@ -1,60 +1,54 @@
-# ParaSwap DexLib [![CI](https://github.com/paraswap/paraswap-dex-lib/actions/workflows/ci.yaml/badge.svg?branch=master)](https://github.com/paraswap/paraswap-dex-lib/actions/workflows/ci.yaml)
+# Messari Standard Subgraphs &bull; [![GitHub license](https://img.shields.io/badge/license-MIT-blue)](https://github.com/messari/subgraphs/blob/master/LICENSE) [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](docs/CONTRIBUTING.md) [![Issues Report](https://img.shields.io/badge/issues-report-yellow.svg)](https://github.com/messari/subgraphs/issues/new)
 
-**DexLib** is a library used by ParaSwap backend to integrate with decentralized exchanges. This library enables external DEX developers to integrate their DEX with ParaSwap by creating pull requests to this repository.
+<p align="center">
+  <a href="https://messari.io/protocol-explorer/all-protocols">
+    <img src="./docs/images/messari-logo.png" alt="Messari Logo" width="460" />
+  </a>
+</p>
 
-### Steps to add new exchange to DexLib
+Messari subgraphs set an industry leading standard for on chain data 🚀
 
-1. Fork [paraswap-dex-lib](https://github.com/paraswap/paraswap-dex-lib) to your organization or personal account.
-2. Clone the repository locally and create a branch with appropriate name (eg: `feature/super-dex`)
-3. Install the repository dependencies using:
+Utilizing [The Graph](https://thegraph.com/) these subgraphs extract raw blockchain data and transform it into meaningful metrics, for products and analytics.
 
-```bash
-yarn install
-```
+We aim to make sense of DEFI protocols in an open, holistic approach capturing every piece of data from a given protocol type.
 
-4. Initialize the DEX integration. The DEX name should be in `param-case`:
+> Protocol types supported: [Lending](./schema-lending.graphql), [CDP](./schema-lending.graphql), [DEX](./schema-dex-amm.graphql), [Yield Aggregator](./schema-yield.graphql), [NFT Marketplace](./schema-nft-marketplace.graphql), [Network](./schema-network.graphql), [Bridge](./schema-bridge.graphql), Governance
 
-```bash
-yarn init-integration <your-dex-name>
-```
+<sub>If you are a protocol and want to collaborate please visit [messari.io/web3-data-collaboration](https://messari.io/web3-data-collaboration)</sub>
 
-You can find template code for newly integrated Dex in `src/dex/<your-dex-name>`
+## Working Environment
 
-5. Complete the template code by filling the functions implementations. Template code is highly documented which should help you build the implementation. You should look into existing DEX implementation in `src/dex/` to understand the interfaces. Please refer below for detailed explanations and good practices.
+Go to [`docs/SETUP.md`](./docs/SETUP.md) to learn how to setup your machine for Messari subgraph development.
 
-6. Add `<your-dex-name>` to `Dexes` list in `src/dex/index.ts`
+## Learn the Project
 
-7. Complete the test templates (All files with `src/dex/<your-dex-name>/*.test.ts`). Each DEX implementation should have thorough testing. We have multiple kinds of tests each dex must have. You can refer to [Writing Tests](#writing-testing) for detailed explanation. You can run all the tests using
+It is important to familiarize yourself with the project structure and tooling to build efficiently. Go to [`docs/STRUCTURE.md`](./docs/STRUCTURE.md) and [`docs/TOOLING.md`](./docs/TOOLING.md) to learn more.
 
-```bash
-yarn test-integration <your-dex-name>
-```
+- Familiarize yourself with our schemas labeled `schema-{protocol type}.graphql`. Read more details in [`docs/SCHEMA.md`](./docs/SCHEMA.md)
+- We update our schemas as necessary. You can find out about each upgrade in [`docs/CHANGES.md`](./docs/CHANGES.md)
+- To learn about Messari standard methodologies see [`docs/METHODOLOGY.md`](./docs/METHODOLOGY.md)
 
-8. Create a PR(pull-request) from your feature branch to DexLib master. The PR must contain brief explanation about the DEX background, pricing logic, links to existing documentation, important contract addresses, and anything you think could help us review your code faster.
+## Becoming a Subgraph Developer
 
-### Understanding the event based pricing approach
+Becoming a good subgraph developer will take patience and practice. The following resources are for developers of all skill levels to learn the ins and outs of subgraph development. 👾
 
-One of the most important features of ParaSwap is to serve prices efficiently and quickly. As the number of requests grow, and blockchain get faster, it's not feasible to perform fullnode rpc calls to hundreds of pools for every pricing request. To solve this issue ParaSwap uses a novel event based pricing approach which allows to create pricing without performing the fullnode calls every time. `Event` are triggers released by the smart contract when certain changes happen. External services can easily subscribe to these events by websocket connection to a fullnode rpc.
+- For a full walkthrough of our subgraph development process visit [`docs/WALKTHROUGH.md`](./docs/WALKTHROUGH.md).
+- Resources for development of varying levels can be found in [`docs/RESOURCES.md`](./docs/RESOURCES.md).
+- To learn about common errors, best error handling practices, and debugging see [`docs/ERRORS.md`](./docs/ERRORS.md)
+- Subgraph performance is also a concern. Learn about indexing / querying performance by reading [`docs/PERFORMANCE`](./docs/PERFORMANCE.md)
+- Learn about retrieving prices in subgraphs and how to handle this in [`docs/ORACLES.md`](./docs/ORACLES.md)
 
-To follow ParaSwap's event based approach DEX should fetch the required on chain state to do pricing once, subscribe to events, update state when events are released, and on price request only use in memory state to create prices. To make the whole event based approach easy to implement and optimized on backend, most of the implementation logic is abstracted and developers have to only obey a simple interface.
+## Contributing Guidelines
 
-TODO: explain the blockmanager and stateful event subscriber
+We welcome contributions from the community! You can point out or fix bugs, suggest changes, add new features, or add new subgraphs. ✅
 
-### Good Practices for DEX integration
+- For bugs, features, or change requests please submit an [issue](https://github.com/messari/subgraphs/issues) following our [guide](./docs/ISSUES.md).
+- General contribution guidelines and practices will be found in [`docs/CONTRIBUTING.md`](./docs/CONTRIBUTING.md)
 
-- Fullnode calls are expensive. An integration should minimize the number of fullnode rpc calls by following [Event based Pricing](#Understanding-the-event-based-pricing-approach)
-- Use Multicall. Instead of performing each RPC calls individually they should be batched together into multicalls.
-- Contract & Interface instances should be reused. There will be cases when you would be lured to create Contract/Interface objects for every dex pool to perform on-chain calls. This can lead to memory leaks in DEXes like UniswapV2 where there can be arbitrarily many pools. In such cases all the pools with the same abi should reuse the same Contract/Interface object.
+## Development Status
 
-### Writing Testing
+You can find a visualizer with the status of all Messari subgraphs at [subgraphs.xyz](https://subgraphs.messari.io/)! The code lives under `./dashboard`.
 
-- Integration Tests (`<you-dex-name>-integration.test.ts`): Tests the basic validity of the integration like prices are valid, obeys the limit pools, etc.
-- Events Unit Tests (`<you-dex-name>-events.test.ts`): Unit tests the event based system. This is done by fetching the state on-chain before the event, manually pushing the block logs to the event subscriber, comparing the local state with on-chain state.
-- E2E Tests (`<you-dex-name>-e2e.test.ts`): End to end test the integration which involves pricing, transaction building and simulating the transaction on chain using tenderly fork simulations. E2E tests use the Tenderly fork api. Please add the following to your .env file:
+You can see our subgraphs supporting the data for our product ["Protocol Metrics"](https://messari.io/protocol-explorer/all-protocols)
 
-```bash
-TENDERLY_TOKEN=Find this under Account>Settings>Authorization.
-TENDERLY_ACCOUNT_ID=Your Tenderly account name.
-TENDERLY_PROJECT=Name of a Tenderly project you have created in your
-dashboard.
-```
+> _Quick note_: the raw deployment status of all subgraphs lives in [`./deployment/deployment.json`](./deployment/deployment.json)

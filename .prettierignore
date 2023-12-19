@@ -1,9 +1,3 @@
-.gitignore
-.prettierignore
-yarn.lock
-yarn-error.log
-package-lock.json
-dist
-build
-coverage
-pnpm-lock.yaml
+Ignore all yaml files:
+*.yaml
+*.yml
